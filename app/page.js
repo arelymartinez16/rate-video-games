@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { lusitana } from "./fonts/fonts";
 
 export default function Home() {
   return (
