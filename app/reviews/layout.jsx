@@ -1,3 +1,5 @@
+import Navbar from "../ui/reviews/Navbar";
+
 export const experimental_ppr = true;
 
 export default function Layout({ children }) {
