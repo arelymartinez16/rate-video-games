@@ -6,6 +6,29 @@ import { SignupFormSchema } from "./definitions";
 import supabase from "./utils/supabase";
 import bcrypt from "bcrypt";
 
+const API_URL = process.env.API_URL;
+const API_KEY = process.env.API_KEY;
+
+export async function fetchGames() {
+  try {
+    const response = await fetch(`${API_URL}/games?key=${API_KEY}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch games:', error);
+  }
+}
+
+export async function fetchGame(id) {
+  try {
+    const response = await fetch(`${API_URL}/games/${id}?key=${API_KEY}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch game:', error);
+  }
+}
+
 export async function authenticate(prevState, formData) {
     try {
       await signIn("credentials", formData);

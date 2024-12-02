@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div className="bg-background text-foreground flex flex-col items-center justify-center min-h-screen py-2">
         {children}
       </div>
     </>
