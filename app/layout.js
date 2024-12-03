@@ -1,5 +1,6 @@
 import "./globals.css";
 import { inter } from "@/app/fonts/fonts"
+import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
   title: {

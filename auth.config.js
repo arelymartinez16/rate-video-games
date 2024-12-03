@@ -14,7 +14,7 @@ export const authConfig = {
               return Response.redirect(new URL("/reviews", nextUrl));
             }
             return true;
-        },
+        }
     },
     providers: []
 } 

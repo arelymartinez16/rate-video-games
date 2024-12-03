@@ -1,4 +1,5 @@
 import Navbar from "../ui/reviews/Navbar";
+import { SessionProvider } from "next-auth/react";
 
 export const experimental_ppr = true;
 

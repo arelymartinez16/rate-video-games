@@ -48,4 +48,10 @@ export const { auth, signIn, signOut } = NextAuth({
         },
       }),
     ],
+    callbacks: {
+      async session(session, user) {
+        session.user.id = user.id;
+        return session
+      }
+    }
 });

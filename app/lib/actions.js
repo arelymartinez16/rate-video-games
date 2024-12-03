@@ -9,13 +9,67 @@ import bcrypt from "bcrypt";
 const API_URL = process.env.API_URL;
 const API_KEY = process.env.API_KEY;
 
+export async function fetchReviews(gameId) {
+  try {
+    const { data, error } = await supabase
+    .from('reviews')
+    .select('*')
+    .eq('game_id', gameId)
+  
+    if (error) {
+      throw new Error('Failed to fetch reviews');
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch reviews:', error);
+  }
+}
+
+export async function addReview(gameId, reviewText) {
+  try {
+    const { data, error } = await supabase
+      .from('reviews')
+      .insert([{ game_id: gameId, content: reviewText }]);
+
+    if (error) {
+      throw new Error('Failed to add review');
+    }
+
+    return data[0];
+  } catch (error) {
+    console.error('Failed to add review:', error);
+  }
+}
+
 export async function fetchGames() {
   try {
     const response = await fetch(`${API_URL}/games?key=${API_KEY}`);
     const data = await response.json();
+    // await addGamesToDatabase(data.results);
     return data;
   } catch (error) {
     console.error('Failed to fetch games:', error);
+  }
+}
+
+async function addGamesToDatabase(games) {
+  try {
+    const { data, error } = await supabase
+      .from('games')
+      .insert(games.map(game => ({
+        id: game.id,
+        name: game.name,
+        description: game.description,
+        background_image: game.background_image,
+        rating: game.rating,
+      })));
+    if (error) {
+      console.error('Failed to add games to database:', error);
+    }
+    return data;
+  } catch (error) {
+    console.error('Failed to add games to database:', error);
   }
 }
 
