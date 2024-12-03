@@ -6,17 +6,37 @@ The motivation behind this project was to create a comprehensive platform for vi
 
 ## Installation
 
-Run the development server:
+1. Clone the repository:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```bash
+   git clone https://github.com/arelymartinez16/rate-video-games.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd rate-video-games
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Set up your environment variables:
+
+   - Create a `.env.local` file in the `root` directory with your API keys and database credentials.
+   - Example `.env.local`:
+
+     ```env
+      NEXT_PUBLIC_SUPABASE_URL=""
+      NEXT_PUBLIC_SUPABASE_ANON_KEY=""
+      NEXTAUTH_SECRET=""
+
+      API_URL="https://api.rawg.io/api"
+      API_KEY=""
+     ```
 
 ## Features
 
